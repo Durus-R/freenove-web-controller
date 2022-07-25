@@ -32,5 +32,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 
+# My own
 package-lock.json
 node_modules/
