@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr fFf">
     <q-header elevated>
       <q-toolbar>
 
@@ -7,7 +7,7 @@
           Quasar App
         </q-toolbar-title>
 
-        <q-btn color="black" label="Black" @click="dark_mode()"/>
+        <q-btn color="black" :label="btn_text" @click="dark_mode()" style="margin-right:15px"/>
 
         <div>&copy; Ren&eacute; Regensbogen 2022</div>
       </q-toolbar>
@@ -21,29 +21,26 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent} from 'vue';
+<script lang="ts" setup>
+import {ref} from 'vue';
 import { useQuasar } from 'quasar';
 
+name: 'MainLayout';
 
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-
-  },
-
-  setup () {
 
     const $q = useQuasar()
+    var btn_text = ref('Black');
     function dark_mode() {
-     $q.dark.toggle();}
-    return {
+     $q.dark.toggle();
+     if (btn_text.value == 'Black') {
+       btn_text.value = 'White'
+     } else {
+       btn_text.value = 'Black'
+     }
+     }
 
 
-        dark_mode
 
 
-  }
-}});
+
 </script>
