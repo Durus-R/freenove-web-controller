@@ -5,10 +5,12 @@
         <q-toolbar-title> Quasar App </q-toolbar-title>
 
         <q-btn
-          color="black"
-          :label="btn_text"
+
+          :color="button0.color.value"
+          :label="button0.label.value"
+          :text-color="button0.textColor.value"
           @click="dark_mode()"
-          style="margin-right: 15px"
+          style="margin-right: 15px; color: #FFFfff;"
         />
 
         <div>&copy; Ren&eacute; Regensbogen 2022</div>
@@ -22,19 +24,37 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 import { useQuasar } from 'quasar';
 
-name: 'MainLayout';
+interface btn_config {
+  label: Ref<string>,
+  color: Ref<string>,
+  textColor: Ref<string>,
+  dark_mode: boolean
+}
 
 const $q = useQuasar();
-var btn_text = ref('Black');
+
+var button0 : btn_config = {
+  label: ref('Dark Mode'),
+  color: ref('black'),
+  textColor: ref('white'),
+  dark_mode: false
+};
+
 function dark_mode() {
   $q.dark.toggle();
-  if (btn_text.value == 'Black') {
-    btn_text.value = 'White';
+  if (!(button0.dark_mode)) {
+    button0.label.value = 'Bright Mode';
+    button0.dark_mode = true;
+    button0.color.value = 'yellow';
+    button0.textColor.value = 'black';
   } else {
-    btn_text.value = 'Black';
+    button0.label.value = 'Dark Mode';
+    button0.dark_mode = false;
+    button0.color.value = 'black';
+    button0.textColor.value = 'white';
   }
 }
 </script>
