@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import { Ref, ref } from 'vue';
-import { useQuasar } from 'quasar';
+import { useQuasar, setCssVar } from 'quasar';
 
 interface btn_config {
   label: Ref<string>;
@@ -44,16 +44,19 @@ var button0: btn_config = {
 
 function dark_mode() {
   $q.dark.toggle();
+
   if (!button0.dark_mode) {
     button0.label.value = 'Bright Mode';
     button0.dark_mode = true;
     button0.color.value = 'yellow';
     button0.textColor.value = 'black';
+    setCssVar('primary', '#1c89f2');
   } else {
     button0.label.value = 'Dark Mode';
     button0.dark_mode = false;
     button0.color.value = 'black';
     button0.textColor.value = 'white';
+    setCssVar('primary', '#1d1d1d');
   }
 }
 </script>
