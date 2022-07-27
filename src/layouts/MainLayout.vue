@@ -50,13 +50,13 @@ function dark_mode() {
     button0.dark_mode = true;
     button0.color.value = 'yellow';
     button0.textColor.value = 'black';
-    setCssVar('primary', '#1c89f2');
+    setCssVar('primary', '#1d1d1d');
   } else {
     button0.label.value = 'Dark Mode';
     button0.dark_mode = false;
     button0.color.value = 'black';
     button0.textColor.value = 'white';
-    setCssVar('primary', '#1d1d1d');
+    setCssVar('primary', '#e3760d');
   }
 }
 </script>
