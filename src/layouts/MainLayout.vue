@@ -5,12 +5,11 @@
         <q-toolbar-title> Quasar App </q-toolbar-title>
 
         <q-btn
-
           :color="button0.color.value"
           :label="button0.label.value"
           :text-color="button0.textColor.value"
           @click="dark_mode()"
-          style="margin-right: 15px; color: #FFFfff;"
+          style="margin-right: 15px; color: #ffffff"
         />
 
         <div>&copy; Ren&eacute; Regensbogen 2022</div>
@@ -28,24 +27,24 @@ import { Ref, ref } from 'vue';
 import { useQuasar } from 'quasar';
 
 interface btn_config {
-  label: Ref<string>,
-  color: Ref<string>,
-  textColor: Ref<string>,
-  dark_mode: boolean
+  label: Ref<string>;
+  color: Ref<string>;
+  textColor: Ref<string>;
+  dark_mode: boolean;
 }
 
 const $q = useQuasar();
 
-var button0 : btn_config = {
+var button0: btn_config = {
   label: ref('Dark Mode'),
   color: ref('black'),
   textColor: ref('white'),
-  dark_mode: false
+  dark_mode: false,
 };
 
 function dark_mode() {
   $q.dark.toggle();
-  if (!(button0.dark_mode)) {
+  if (!button0.dark_mode) {
     button0.label.value = 'Bright Mode';
     button0.dark_mode = true;
     button0.color.value = 'yellow';
