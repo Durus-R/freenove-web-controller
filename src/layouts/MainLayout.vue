@@ -12,7 +12,7 @@
           style="margin-right: 15px; color: #ffffff"
         />
 
-        <div>&copy; Ren&eacute; Regensbogen 2022</div>
+        <div v-if="render_copyright">&copy; Ren&eacute; Regensbogen 2022</div>
       </q-toolbar>
     </q-header>
 
@@ -23,8 +23,10 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref } from 'vue';
+import { Ref, ref, watch} from 'vue';
 import { useQuasar, setCssVar } from 'quasar';
+
+const render_copyright=ref(false);
 
 interface btn_config {
   label: Ref<string>;
@@ -59,4 +61,13 @@ function dark_mode() {
     setCssVar('primary', '#e3760d');
   }
 }
+
+watch(()=>$q.screen.width, (val) => {
+        if (val>600) {
+          render_copyright.value=true;
+        } else {
+          render_copyright.value=false;
+        }
+}
+)
 </script>
