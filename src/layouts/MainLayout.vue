@@ -23,10 +23,10 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref, watch} from 'vue';
+import { Ref, ref, watch } from 'vue';
 import { useQuasar, setCssVar } from 'quasar';
 
-const render_copyright=ref(false);
+const render_copyright = ref(false);
 
 interface btn_config {
   label: Ref<string>;
@@ -62,12 +62,14 @@ function dark_mode() {
   }
 }
 
-watch(()=>$q.screen.width, (val) => {
-        if (val>600) {
-          render_copyright.value=true;
-        } else {
-          render_copyright.value=false;
-        }
-}
-)
+watch(
+  () => $q.screen.width,
+  (val) => {
+    if (val > 600) {
+      render_copyright.value = true;
+    } else {
+      render_copyright.value = false;
+    }
+  }
+);
 </script>
