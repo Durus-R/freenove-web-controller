@@ -94,19 +94,15 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
-import { getCssVar, useQuasar } from 'quasar';
+import { useQuasar } from 'quasar';
+import {get_color} from 'src/lib/helpers';
 
-function get_color(index : string) {
-  if((getCssVar(index)) === null)
-    return '#e3760d';
-  else return getCssVar(index) as string;
 
-}
 
 const image_file = ref('freenove_orange.png');
 const led_selection = ref('Led1');
 const dropdown_title = ref('Manual');
-const dropdown_color = ref(get_color('primary'));
+const dropdown_color = ref(get_color('dark'));
 
 const $q = useQuasar();
 

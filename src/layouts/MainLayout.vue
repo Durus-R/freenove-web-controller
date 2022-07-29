@@ -24,7 +24,8 @@
 
 <script lang="ts" setup>
 import { Ref, ref, watch } from 'vue';
-import { useQuasar, setCssVar } from 'quasar';
+import { useQuasar, setCssVar} from 'quasar';
+import { get_color } from 'src/lib/helpers';
 
 const render_copyright = ref(false);
 
@@ -52,13 +53,13 @@ function dark_mode() {
     button0.dark_mode = true;
     button0.color.value = 'yellow';
     button0.textColor.value = 'black';
-    setCssVar('primary', '#1d1d1d');
+    setCssVar('primary', get_color('negative'));
   } else {
     button0.label.value = 'Dark Mode';
     button0.dark_mode = false;
     button0.color.value = 'black';
     button0.textColor.value = 'white';
-    setCssVar('primary', '#e3760d');
+    setCssVar('primary', get_color('positive'));
   }
 }
 
