@@ -1,3 +1,21 @@
+<style lang="scss">
+
+
+
+.label {
+  margin-top: 75px;
+  margin-left: 75px;
+  background-color: var(--q-primary) !important;
+  padding-left: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 16px;
+  font-size: 120%;
+  border: 0;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+}
+</style>
 <template>
   <q-page class="fit row items-start justify-center">
     <div
@@ -23,7 +41,13 @@
       "
     >
       <div class="q-gutter-md" style="margin-left: 15px; margin-top: 20px">
-        <q-btn-dropdown color="primary" :label="dropdown_title" cover style="margin-left:80px" size="120%">
+        <q-btn-dropdown
+          color="primary"
+          :label="dropdown_title"
+          cover
+          style="margin-left: 80px"
+          size="120%"
+        >
           <q-list>
             <q-item clickable v-close-popup @click="onItemClick_m">
               <q-item-section>
@@ -127,7 +151,16 @@
     <div
       id="sensor_values"
       style="overflow: auto; min-width: 200px; max-width: 200px"
-    ></div>
+    >
+      <div class="label">
+        Ultrasonic: {{ Ultrasonic_Value }}cm
+      </div>
+
+      <div class="label">
+        Light: {{ light_value }}
+    </div>
+    
+    </div>
     <div
       id="motor_control"
       class="offset-1"
@@ -161,6 +194,9 @@ const image_file = ref('freenove_orange.png');
 const led_selection = ref('Led1');
 const dropdown_title = ref('Manual');
 const radio_disabled = ref(false);
+const Ultrasonic_Value = ref(1.1);
+const bg_color=ref('rgb(227, 118, 13)');
+const light_value=ref(false);
 
 const $q = useQuasar();
 
@@ -169,8 +205,10 @@ watch(
   (val) => {
     if (val) {
       image_file.value = 'freenove_blue.png';
+      bg_color.value='#1c89f2'
     } else {
       image_file.value = 'freenove_orange.png';
+      bg_color.value='rgb(227, 118, 13)'
     }
   }
 );
